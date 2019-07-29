@@ -1,0 +1,75 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:11100/eureka/
+    registryFetchIntervalSeconds: 10
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    leaseRenewalIntervalInSeconds: 5
+    preferIpAddress: true
+server:
+  port: 11300
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: wdhw-api-server
+  rabbitmq:
+    addresses: 192.168.5.22
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: WDHW-EUREKA-CONFIG-SERVER
+      name: common,wdhw-api-server
+      profile: dev
+    sentinel:
+      eager: true
+      transport:
+        dashboard: localhost:8080
+      datasource:
+        ds1:
+            file:
+              file: 'classpath: flowrule.json'
+              data-type: json
+              rule-type: flow
+  zipkin:
+      base-url: http://127.0.0.1:9411
+  sleuth:
+      web:
+        client:
+          enabled: true
+      sampler:
+          probability: 1.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      # 是否展示健康检查详情
+      show-details: always
+logging:
+  level:
+    root: info
+
+
+
+ribbon:
+  ReadTimeout:  30000
+  ConnectTimeout:  15000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+feign:
+  hystrix:
+    enabled: true

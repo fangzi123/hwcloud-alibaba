@@ -1,0 +1,14 @@
+#CDN接口缓存配置列表
+cdn:
+   cdnDtos:
+       - id: 1
+         isPublic: true
+         cacheExpireTime: 300
+         interfaceName: /carpic/agent/countAgentInfos?.*
+         desc: 经纪人数量接口
+       - id: 2
+         isPublic: true
+         cacheExpireTime: 1440
+         interfaceName: /news/city/queryCityList?.*
+         desc: 省份城市接口
+

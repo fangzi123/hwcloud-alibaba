@@ -1,0 +1,30 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:11100/eureka/
+    registryFetchIntervalSeconds: 10
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    leaseRenewalIntervalInSeconds: 5
+    preferIpAddress: true
+server:
+  port: 11300
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: wdhw-api-server
+  rabbitmq:
+    addresses: 192.168.5.22
+    port: 5672
+    username: guest
+    password: guest
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#logging:
+#  level:
+#    root: info
+

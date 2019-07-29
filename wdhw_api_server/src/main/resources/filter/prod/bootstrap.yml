@@ -1,0 +1,40 @@
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: WDHW-EUREKA-CONFIG-SERVER
+      name: common,wdhw-api-server
+      profile: dev
+    sentinel:
+#      eager: true
+#      transport:
+#        dashboard: localhost:8080
+      datasource:
+        ds1:
+          file:
+            data-type: json
+            rule-type: flow
+
+#  zipkin:
+#      base-url: http://127.0.0.1:9411
+#  sleuth:
+#      web:
+#        client:
+#          enabled: true
+#      sampler:
+#          percentage: 1.0 #1.0表示100%追踪
+
+ribbon:
+  ReadTimeout:  30000
+  ConnectTimeout:  15000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+feign:
+  hystrix:
+    enabled: true

@@ -1,0 +1,23 @@
+server:
+    port: 11500
+spring:
+    application:
+        name: wdhw-admin-server
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:11100/eureka/
+        registryFetchIntervalSeconds: 10
+    instance:
+        lease-expiration-duration-in-seconds: 15
+        leaseRenewalIntervalInSeconds: 5
+        preferIpAddress: true
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: refresh,health,info,env,loggers,metrics,trace,dump
+

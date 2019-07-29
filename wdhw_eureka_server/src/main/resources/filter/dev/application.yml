@@ -1,0 +1,21 @@
+server:
+    port: 11100
+spring:
+    application:
+        name: wdhw_eureka_server
+eureka:
+    client:
+        fetch-registry: false
+        register-with-eureka: false
+        registryFetchIntervalSeconds: 30
+        serviceUrl:
+            defaultZone: http://127.0.0.1:${server.port}/eureka/
+    instance:
+        preferIpAddress: true
+    server:
+        enable-self-preservation: false
+        eviction-interval-timer-in-ms: 5000
+management:
+    server:
+        add-application-context-header: false
+

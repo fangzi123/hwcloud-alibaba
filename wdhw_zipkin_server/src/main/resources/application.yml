@@ -1,0 +1,32 @@
+server:
+    port: 9411
+spring:
+    application:
+        name: wdhw-zipkin-server
+#    zipkin:
+#        base-url: http://127.0.0.1:11600
+#    sleuth:
+#        sampler:
+#            percentage: 1.0 #(配置这个就可以，1.0表示100%追踪//0.7表示70%追踪)
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:11100/eureka/
+        registryFetchIntervalSeconds: 10
+    instance:
+        lease-expiration-duration-in-seconds: 15
+        leaseRenewalIntervalInSeconds: 5
+        preferIpAddress: true
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: refresh,health,info,env,loggers,metrics,trace,dump
+    metrics:
+        web:
+            server:
+                auto-time-requests: false
+

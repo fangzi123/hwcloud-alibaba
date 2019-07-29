@@ -1,0 +1,31 @@
+server:
+    port: 11900
+spring:
+    application:
+        name: wdhw-gateway-server
+    cloud:
+        gateway:
+          routes:
+            - predicates:
+                - Path=/api/**
+#                 uri: http://192.168.5.22:8080
+              uri: lb://wdhw-api-server
+              filters:
+                 - StripPrefix=1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:11100/eureka/
+  registryFetchIntervalSeconds: 10
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    leaseRenewalIntervalInSeconds: 5
+    preferIpAddress: true
+
