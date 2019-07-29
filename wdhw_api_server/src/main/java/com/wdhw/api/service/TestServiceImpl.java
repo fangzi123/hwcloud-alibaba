@@ -1,7 +1,5 @@
 package com.wdhw.api.service;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.wdhw.api.util.ExceptionUtil;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,7 +8,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TestServiceImpl implements TestService {
-    @SentinelResource(value = "test", blockHandler = "handleException", blockHandlerClass = {ExceptionUtil.class})
     public void test() {
 
     }

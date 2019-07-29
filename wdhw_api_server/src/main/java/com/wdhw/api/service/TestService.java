@@ -1,7 +1,5 @@
 package com.wdhw.api.service;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.wdhw.api.util.ExceptionUtil;
 
 /**
  * @author wangff
