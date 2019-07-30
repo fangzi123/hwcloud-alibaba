@@ -13,6 +13,17 @@ spring:
         enabled: true
     sampler:
       probability: 1.0
+  cloud:
+    sentinel:
+      eager: true
+      transport:
+        dashboard: localhost:8080
+      datasource:
+        ds1:
+          file:
+            file: 'classpath: flowrule.json'
+            data-type: json
+            rule-type: flow
 
 management:
   endpoints:

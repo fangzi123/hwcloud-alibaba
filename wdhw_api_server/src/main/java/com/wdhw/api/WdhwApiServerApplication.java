@@ -1,5 +1,7 @@
 package com.wdhw.api;
 
+import com.alibaba.csp.sentinel.adapter.servlet.callback.WebCallbackManager;
+import com.wdhw.api.config.CustomUrlBlockHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,5 +19,6 @@ public class WdhwApiServerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        WebCallbackManager.setUrlBlockHandler(new CustomUrlBlockHandler());
     }
 }
