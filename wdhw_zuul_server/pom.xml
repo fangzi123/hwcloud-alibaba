@@ -2,32 +2,33 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.wd</groupId>
         <artifactId>hwcloud</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>wdhw_api_server</artifactId>
+    <artifactId>wdhw_zuul_server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>wdhw_api_server</name>
-    <description>Demo project for Spring Boot</description>
+    <packaging>jar</packaging>
 
+    <name>wdhw_zuul_server</name>
+    <description>wdhw_zuul_server</description>
 
     <dependencies>
-        <!--服务追踪-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.13</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,16 +36,42 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.netflix.netflix-commons</groupId>
+            <artifactId>netflix-commons-util</artifactId>
+            <version>0.1.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.22</version>
         </dependency>
+        <!-- jaxb模块引用 - start -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
         </dependency>
-
-</dependencies>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <!-- jaxb模块引用 - end -->
+    </dependencies>
 
     <profiles>
         <profile>
@@ -70,7 +97,7 @@
         </profile>
     </profiles>
     <build>
-        <finalName>wdhw_api_server</finalName>
+        <finalName>wdhw_zuul_server</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources/filter/${env}</directory>
@@ -79,7 +106,6 @@
                     <include>*.conf</include>
                     <include>*.yml</include>
                     <include>*.properties</include>
-                    <include>*.json</include>
                 </includes>
                 <filtering>true</filtering>
             </resource>
@@ -91,5 +117,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

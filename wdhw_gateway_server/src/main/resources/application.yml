@@ -19,13 +19,3 @@ management:
       exposure:
         include: '*'
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://127.0.0.1:11100/eureka/
-  registryFetchIntervalSeconds: 10
-  instance:
-    lease-expiration-duration-in-seconds: 15
-    leaseRenewalIntervalInSeconds: 5
-    preferIpAddress: true
-

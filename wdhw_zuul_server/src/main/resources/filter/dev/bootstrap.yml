@@ -1,0 +1,47 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+  threadpool:
+      default:
+        coreSize: 500
+        maximumSize: 1000
+        allowMaximumSizeToDivergeFromCoreSize: true
+        maxQueueSize: -1
+feign:
+  hystrix:
+    enable: false
+ribbon:
+  maxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+
+
+zuul:
+  ribbonIsolationStrategy: THREAD
+  host:
+    maxTotalConnections: 1000
+    maxPerRouteConnections: 100
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+  routes:
+    lms:
+      path: /lms/**
+      serviceId: wd-lms-server
+      #开启cookie
+      sensitiveHeaders:
+    api:
+      path: /api/**
+      serviceId: wdhw-api-server
+    web:
+      path: /web/**
+      serviceId: wdhw-web-server

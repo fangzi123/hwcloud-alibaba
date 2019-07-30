@@ -11,7 +11,7 @@
 
     <modules>
         <module>wdhw_eureka_server</module>
-        <module>wdhw_eureka_zuul_server</module>
+        <module>wdhw_zuul_server</module>
         <module>wdhw_eureka_config_server</module>
         <module>wdhw_turbine_server</module>
         <module>wdhw_api_server</module>

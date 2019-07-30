@@ -1,0 +1,12 @@
+server:
+    port: 11200
+spring:
+    application:
+        name: wdhw-zuul-server
+    servlet:
+        multipart:
+            max-file-size: 400MB
+            max-request-size: 400MB
+management:
+    server:
+        add-application-context-header: false
