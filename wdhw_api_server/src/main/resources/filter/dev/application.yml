@@ -18,12 +18,12 @@ spring:
       eager: true
       transport:
         dashboard: localhost:8080
-      datasource:
-        ds1:
-          file:
-            file: 'classpath: flowrule.json'
-            data-type: json
-            rule-type: flow
+#      datasource:
+#        ds1:
+#          file:
+#            file: 'classpath: flowrule.json'
+#            data-type: json
+#            rule-type: flow
 
 management:
   endpoints:
