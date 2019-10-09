@@ -1,21 +1,23 @@
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
 server:
-    port: 11900
+    port: 18085
 spring:
     application:
         name: wdhw-gateway-server
     cloud:
         gateway:
-          routes:
-            - predicates:
-                - Path=/api/**
-#                 uri: http://192.168.5.22:8080
-              uri: lb://wdhw-api-server
-              filters:
-                 - StripPrefix=1
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-
+            routes:
+            -   filters:
+                - StripPrefix=1
+                id: nacos-route
+                predicates:
+                -   args[pattern]: /nacos/**
+                    name: Path
+                uri: lb://wdhw-api-server
+        nacos:
+            discovery:
+                server-addr: 127.0.0.1:8848
