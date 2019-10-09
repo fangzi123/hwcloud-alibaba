@@ -14,7 +14,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
+            <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
         <!--使用@EnableZipkinServer注解方式只需要依赖如下两个包-->
